@@ -21,10 +21,10 @@ public class LoanStatisticsServiceImpl implements LoanStatisticsService {
                 .mapToDouble(e -> e)
                 .summaryStatistics();
 
-        return new LoanInterestRateSummary(
-                interestRateStats.getMin(),
-                interestRateStats.getAverage(),
-                interestRateStats.getMax()
-        );
+        return LoanInterestRateSummary.builder()
+                .minInterestRate(interestRateStats.getMin())
+                .averageInterestRate(interestRateStats.getAverage())
+                .maxInterestRate(interestRateStats.getMax())
+                .build();
     }
 }
